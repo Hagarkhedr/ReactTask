@@ -7,6 +7,8 @@ import SortIcon from '@material-ui/icons/Sort';
 import { connect } from 'react-redux';
 import actionTypes from '../../statemanager/actionTypes/index';
 import PriceFilter from './priceFilter';
+import { IconButton } from '@material-ui/core';
+
 class SearchFilter extends Component {
     constructor(props) {
         super(props)
@@ -28,7 +30,8 @@ class SearchFilter extends Component {
     }
     Search() {
         if (this.state.businessName && this.state.location) {
-            this.service.searchBusiness(this.state.businessName, this.state.location); }
+            this.service.searchBusiness(this.state.businessName, this.state.location);
+        }
         else {
             alert('Enter Both businessname and location')
         }
@@ -48,8 +51,10 @@ class SearchFilter extends Component {
                     onClick={this.Search.bind(this)} >
                     Search
                   </Button>
-                <SortIcon onClick={this.sort.bind(this)} />
-              <PriceFilter />
+                <IconButton onClick={this.sort.bind(this)}>
+                    <SortIcon />
+                </IconButton>
+            <PriceFilter />
             </form>
 
 
